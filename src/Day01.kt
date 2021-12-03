@@ -1,7 +1,8 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        val intpairs = input.map { it.toInt() }.zipWithNext()
-        return intpairs.fold(0) { acc, zePair -> if(zePair.second > zePair.first)  acc + 1 else acc}
+        return input.map { it.toInt() }
+            .zipWithNext()
+            .fold(0) { acc, zePair -> if(zePair.second > zePair.first)  acc + 1 else acc}
     }
 
     fun part2(input: List<String>): Int {
@@ -11,7 +12,9 @@ fun main() {
         val ser2 = ints.drop(1).dropLast(1)
         val ser3  = ints.drop(2)
 
-        val sums = (ser1.indices).map { ser1[it] + ser2[it] + ser3[it]}.zipWithNext()
+        val sums = (ints.indices)
+            .map { ser1[it] + ser2[it] + ser3[it]}
+            .zipWithNext()
 
         return sums.fold(0) { acc, zePair -> if(zePair.second > zePair.first)  acc + 1 else acc}
     }
